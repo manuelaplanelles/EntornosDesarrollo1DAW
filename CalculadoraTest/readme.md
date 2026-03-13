@@ -31,6 +31,9 @@ Este ejercicio introduce el ciclo básico del testing: escribir un test, detecta
 5. Segunda ejecución → 4 tests en verde
 
 **Código — CalculadoraMPLTest.java**
+`<details>
+<summary>Ver el código completo</summary>
+  
 ```java
 package org.ejercicio;
 
@@ -64,6 +67,8 @@ public class CalculadoraMPLTest {
     }
 }
 ```
+</details>
+
 
 **Resultado — Tests fallando (errores detectados)**  
 ![Ejercicio 1 - tests fallando](screenshots/ej1_tests_fallando.png)
