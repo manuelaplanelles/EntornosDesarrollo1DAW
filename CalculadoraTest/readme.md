@@ -74,7 +74,7 @@ public class CalculadoraMPLTest {
 ![Ejercicio 1 - tests fallando](img/error-detectado.png)
 
 **Resultado — Tests corregidos**  
-![Ejercicio 1 - tests en verde]()
+![Ejercicio 1 - tests en verde](img/tests-corregidos.png)
 
 ---
 
