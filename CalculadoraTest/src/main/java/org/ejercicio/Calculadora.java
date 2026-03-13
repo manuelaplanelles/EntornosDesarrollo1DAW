@@ -17,7 +17,7 @@ public class Calculadora {
 
     public int resta() {
         // Error introducido de forma intencionada para detectarlo con JUnit
-        int resultado = primerNumero + segundoNumero;
+        int resultado = primerNumero - segundoNumero;
         return resultado;
     }
 
@@ -28,7 +28,7 @@ public class Calculadora {
 
     public int divide() {
         // Error introducido de forma intencionada para detectarlo con JUnit
-        int resultado = primerNumero + segundoNumero;
+        int resultado = primerNumero / segundoNumero;
         return resultado;
     }
 }
