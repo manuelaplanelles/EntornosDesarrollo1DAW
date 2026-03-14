@@ -142,10 +142,10 @@ public void testDivideExcepcion() {
 </details>
 
 **Resultado — Fallo forzado**  
-![Ejercicio 2 - fallo forzado](img/test-divcero)
+![Ejercicio 2 - fallo forzado](img/test-divcero.png)
 
 **Resultado — 5 tests en verde**  
-![Ejercicio 2 - tests en verde](img/test-div0)
+![Ejercicio 2 - tests en verde](img/test-div0.png)
 
 ---
 
