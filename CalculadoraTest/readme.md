@@ -277,7 +277,62 @@ public void testSumaConCsvSource(int a, int b, int valorEsperado) {
 
 ## Ejercicio 5
 
-*(pendiente)*
+> _Crear una Suite de pruebas que agrupe `CalculadoraMPLTest` y `OtraClaseDePruebasTest` y las ejecute juntas en un solo paso._
+
+En proyectos reales hay múltiples clases con sus propios tests. Ejecutarlos uno a uno no es eficiente. Una Suite permite lanzar todos los tests del proyecto de un solo clic, lo que resulta especialmente útil en procesos de integración continua donde se necesita verificar el estado completo del sistema tras cada cambio en el código.
+
+**Pasos realizados**
+
+1. Añadidas dependencias `junit-platform-suite-api` y `junit-platform-suite-engine` en `pom.xml`
+2. Creación de `OtraClaseDePruebasTest.java` con un test simple de ejemplo
+3. Creación de `SuitePruebasMPL.java` con `@Suite` y `@SelectClasses` apuntando a las dos clases
+4. Ejecución desde `SuitePruebasMPL` → todos los tests de ambas clases en verde
+
+**Código — SuitePruebasMPL.java**
+
+<details>
+<summary>Ver el código completo</summary>
+  
+```java
+package org.ejercicio;
+
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
+
+@Suite
+@SelectClasses({
+    CalculadoraMPLTest.class,
+    OtraClaseDePruebasTest.class
+})
+public class SuitePruebasMPL {
+    // No necesita métodos
+}
+```
+</details>
+
+**Código — OtraClaseDePruebasTest.java**
+
+<details>
+<summary>Ver el código completo</summary>
+  
+```java
+package org.ejercicio;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OtraClaseDePruebasTest {
+
+    @Test
+    void testEjemplo() {
+        assertTrue(3 > 1);
+    }
+}
+```
+</details>
+
+**Resultado — Suite ejecutada**  
+![Ejercicio 5 - suite en verde](img/ejercicio5.png)
 
 ---
 
