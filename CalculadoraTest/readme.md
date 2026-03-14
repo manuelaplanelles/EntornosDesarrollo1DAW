@@ -338,7 +338,17 @@ public class OtraClaseDePruebasTest {
 
 ## Ejercicio 6
 
-*(pendiente)*
+> _Escribir una reflexión personal sobre las pruebas unitarias e investigar la pirámide de testing._
+
+**Reflexión personal**
+
+Las pruebas unitarias son una herramienta muy útil para verificar que el código hace exactamente lo que necesita hacer. Permiten comprobar entradas y salidas de cada método, detectar errores o fallos antes de que lleguen a producción y garantizar que los cambios en el código no rompen lo que ya funcionaba. Todo esto contribuye directamente a que el software sea de mayor calidad y más fácil de mantener.
+
+**Pirámide de testing**
+
+La pirámide de testing es una forma visual de organizar los diferentes tipos de pruebas en un proyecto. En la base se sitúan las pruebas unitarias, que son las más numerosas, rápidas y económicas de ejecutar — verifican que cada componente individual funciona correctamente. En el nivel intermedio están las pruebas de integración, que comprueban que los diferentes componentes se comunican bien entre sí. En la cima están las pruebas end-to-end, que simulan el comportamiento real de un usuario, pero son lentas y costosas, por lo que deben limitarse a los flujos más críticos.
+
+Las pruebas unitarias ocupan la base porque son el primer nivel de confianza: si cada pieza pequeña funciona correctamente de forma aislada, el sistema tiene una base sólida sobre la que construir.
 
 ---
 
