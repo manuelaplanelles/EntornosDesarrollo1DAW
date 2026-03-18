@@ -32,11 +32,13 @@ Este ejercicio introduce el ciclo básico del testing: escribir un test, detecta
 **Código — CalculadoraMPLTest.java**
 <details>
 <summary>Ver el código completo</summary>
-  
+
 ```java
 package org.ejercicio;
 
+import org.Calculadora;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculadoraMPLTest {
@@ -166,13 +168,15 @@ En proyectos reales los tests comparten recursos: conexiones a bases de datos, o
 
 <details>
 <summary>Ver el código completo</summary>
-  
+
 ```java
 package org.ejercicio;
 
+import org.Calculadora;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculadoraMPLTest {

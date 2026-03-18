@@ -1,4 +1,4 @@
-package org.ejercicio;
+package org;
 
 public class Calculadora {
 
