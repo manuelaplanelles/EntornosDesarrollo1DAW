@@ -21,9 +21,9 @@ Proyecto progresivo que amplía las técnicas de testing sobre una clase `Calcul
 ---
 
 ### [DiccionarioTest](https://github.com/manuelaplanelles/Testing/tree/main/DiccionarioTest)
-Proyecto progresivo que amplía las técnicas de testing sobre una clase `Diccionario`. Parte de tests básicos, incorpora manejo de excepciones, inicialización con ciclo de vida, tests parametrizados y suite de pruebas.
+Proyecto de pruebas unitarias sobre una clase `Diccionario` español-inglés con más de 1000 palabras. Se verifican casos normales y casos límite, incluyendo el comportamiento ante métodos sin implementar y diccionario vacío. Cobertura obtenida: 97% en líneas.
 
-**Conceptos aplicados:** `@BeforeEach`, `@AfterEach`, `@ParameterizedTest`, `@ValueSource`, `@CsvSource`, `@Suite`.
+**Conceptos aplicados:** `@BeforeEach`, `assertNull`, `assertTrue`, `assertThrows`, cobertura de código.
 
 ---
 
