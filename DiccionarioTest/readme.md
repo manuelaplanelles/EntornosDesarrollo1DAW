@@ -219,7 +219,7 @@ Resultado obtenido con **Run with Coverage**:
 - **Clase Diccionario** → Method 85% | Line 97%
 - Supera el mínimo requerido del 80%
 
-![Cobertura de código](img/cobertura.png)
+![Cobertura de código](img/coberturaPorcentaje.png)
 
 ---
 
