@@ -126,5 +126,15 @@ public class MercadawTest {
         pedido.setImporte_total(cliente.importePedido());
         assertDoesNotThrow(() -> pedido.mostrarResumenOrdenado());
     }
+    @Test
+    public void testPromo3x2ConCantidadNomultiploDe3() {
+        cliente.insertarProducto("pan");
+        cliente.insertarProducto("pan");
+        cliente.insertarProducto("pan");
+        cliente.insertarProducto("pan"); // 4 panes → 1 gratis
+        pedido.setImporte_total(cliente.importePedido()); // 4.00
+        pedido.aplicarPromo3x2(); // debería descontar 1.00 → 3.00
+        assertEquals(3.00, pedido.getImporte_total(), 0.01);
+    }
 
 }

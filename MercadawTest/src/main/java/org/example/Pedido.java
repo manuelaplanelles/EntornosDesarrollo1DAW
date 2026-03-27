@@ -14,12 +14,21 @@ public class Pedido {
 
 
     public void aplicarPromo3x2() {
-        for (Map.Entry<Producto, Integer> entry : pedido.entrySet()) {
+        /*for (Map.Entry<Producto, Integer> entry : pedido.entrySet()) {
             Producto producto = entry.getKey();
             int cantidad = entry.getValue();
 
             if (cantidad % 3 == 0) {
                 int unidadesGratis = cantidad / 3;
+                double descuento = unidadesGratis * producto.getPrecio();
+                importe_total = importe_total - descuento;
+            }
+        }*/
+        for (Map.Entry<Producto, Integer> entry : pedido.entrySet()) {
+            Producto producto = entry.getKey();
+            int cantidad = entry.getValue();
+            int unidadesGratis = cantidad / 3;
+            if (unidadesGratis > 0) {
                 double descuento = unidadesGratis * producto.getPrecio();
                 importe_total = importe_total - descuento;
             }
