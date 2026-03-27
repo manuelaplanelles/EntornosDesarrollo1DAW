@@ -7,6 +7,17 @@ Pruebas unitarias desarrolladas con JUnit 5 para validar la lógica de la aplica
 
 ---
 
+## Índice
+
+- [Métodos probados](#métodos-probados)
+- [Casos normales](#casos-normales)
+- [Casos límite](#casos-límite)
+- [Bug detectado](#bug-detectado)
+- [Cobertura](#cobertura)
+- [Tests](#tests)
+
+---
+
 ## Métodos probados
 
 **Cliente**
@@ -35,10 +46,41 @@ Pruebas unitarias desarrolladas con JUnit 5 para validar la lógica de la aplica
 - Las promociones combinadas (3x2 + 10%) dan el resultado esperado
 - Un cliente con credenciales correctas se encuentra en la lista
 
+---
+
 ## Casos límite
 
 - Insertar un producto inexistente no modifica el pedido
 - Los métodos de resumen no lanzan excepciones con datos válidos
+
+---
+
+## Bug detectado
+
+Durante el desarrollo de los tests se detectó un bug en el método `aplicarPromo3x2()` de la clase `Pedido`. La condición original `cantidad % 3 == 0` solo aplicaba el descuento cuando la cantidad era múltiplo exacto de 3. Con 4 unidades, `4 % 3 = 1` no cumplía la condición y el descuento no se aplicaba.
+
+El test inicial usaba exactamente 3 unidades, por lo que el bug pasó desapercibido. Al añadir un test con 4 unidades, el fallo quedó expuesto.
+
+**Resultado antes de la corrección — test en rojo**  
+![Bug detectado](img/bug-detectado.png)
+
+**Corrección aplicada en `Pedido.java`:**
+```java
+public void aplicarPromo3x2() {
+    for (Map.Entry<Producto, Integer> entry : pedido.entrySet()) {
+        Producto producto = entry.getKey();
+        int cantidad = entry.getValue();
+        int unidadesGratis = cantidad / 3;
+        if (unidadesGratis > 0) {
+            double descuento = unidadesGratis * producto.getPrecio();
+            importe_total = importe_total - descuento;
+        }
+    }
+}
+```
+
+**Resultado tras la corrección — test en verde**  
+![Bug corregido](img/bug-corregido.png)
 
 ---
 
@@ -55,11 +97,9 @@ Pruebas unitarias desarrolladas con JUnit 5 para validar la lógica de la aplica
 ## Tests
 
 <details>
-
 <summary>Ver código completo — MercadawTest.java</summary>
 
 ```java
-
 package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -175,10 +215,19 @@ public class MercadawTest {
         pedido.setImporte_total(cliente.importePedido());
         assertDoesNotThrow(() -> pedido.mostrarResumenOrdenado());
     }
+
+    @Test
+    public void testPromo3x2ConCantidadNoMultiploDe3() {
+        cliente.insertarProducto("pan");
+        cliente.insertarProducto("pan");
+        cliente.insertarProducto("pan");
+        cliente.insertarProducto("pan");
+        pedido.setImporte_total(cliente.importePedido());
+        pedido.aplicarPromo3x2();
+        assertEquals(3.00, pedido.getImporte_total(), 0.01);
+    }
 }
-
 ```
-
 </details>
 
 ---
