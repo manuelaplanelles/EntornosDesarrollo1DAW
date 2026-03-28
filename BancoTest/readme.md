@@ -6,6 +6,7 @@ Proyecto práctico sobre pruebas de integración en Java utilizando JUnit 5 y Mo
 
 - [Clases](#clases)
 - [Tests implementados](#tests-implementados)
+- [Mockito — Anotaciones utilizadas](#mockito--anotaciones-utilizadas)
 - [Cobertura](#cobertura)
 - [Código](#código)
 
@@ -30,6 +31,26 @@ Proyecto práctico sobre pruebas de integración en Java utilizando JUnit 5 y Mo
 | `testRetornosMultiples` | Devuelve valores distintos en llamadas consecutivas | `thenReturn` múltiple |
 | `testOrdenDeLlamadas` | Verifica que los métodos se llaman en el orden correcto | `InOrder` |
 | `testSpy` | El espía mantiene el comportamiento real del objeto | `@Spy` |
+
+---
+
+## Mockito — Anotaciones utilizadas
+
+| Anotación | Descripción |
+|-----------|-------------|
+| `@Mock` | Crea un objeto falso que sustituye a `RepositorioBanco` |
+| `@InjectMocks` | Inyecta el mock automáticamente en `BancoService` |
+| `@Spy` | Crea un espía que mantiene el comportamiento real del objeto |
+| `@ExtendWith(MockitoExtension.class)` | Habilita Mockito en JUnit 5 |
+
+**Técnicas aplicadas**
+
+- `when(...).thenReturn(...)` — define el valor que devuelve el mock
+- `verify(...)` — comprueba que un método ha sido llamado
+- `thenReturn` múltiple — devuelve valores distintos en llamadas consecutivas
+- `InOrder` — verifica que los métodos se llaman en el orden correcto
+- `@Spy` — permite mezclar comportamiento real y simulado
+- `assertThrows` — verifica que se lanza una excepción esperada
 
 ---
 
