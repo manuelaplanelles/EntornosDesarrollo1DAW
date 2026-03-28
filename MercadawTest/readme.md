@@ -1,11 +1,6 @@
 # MercadawTest — Pruebas Unitarias con JUnit 5
 
-**1º DAW – Entornos de Desarrollo | IES Mutxamel | Curso 2025/2026**  
-**Autora:** Manuela Planelles Lucas
-
 Pruebas unitarias desarrolladas con JUnit 5 para validar la lógica de la aplicación Mercadaw. Se testean las clases `Cliente`, `Pedido` y `Mercadaw`, cubriendo la gestión de pedidos, cálculo de importes, aplicación de promociones y autenticación de usuarios.
-
----
 
 ## Índice
 
@@ -238,3 +233,7 @@ public class MercadawTest {
 - JUnit 5
 - Maven
 - IntelliJ IDEA
+
+
+**1º DAW – Entornos de Desarrollo | IES Mutxamel | Curso 2025/2026**  
+**Autora:** Manuela Planelles Lucas
