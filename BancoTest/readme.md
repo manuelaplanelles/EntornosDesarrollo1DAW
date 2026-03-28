@@ -1,11 +1,6 @@
 # BancoTest — Pruebas de Integración con Mockito
 
-**1º DAW – Entornos de Desarrollo | IES Mutxamel | Curso 2025/2026**  
-**Autora:** Manuela Planelles Lucas
-
 Proyecto práctico sobre pruebas de integración en Java utilizando JUnit 5 y Mockito. Se simula una aplicación bancaria donde `BancoService` depende de `RepositorioBanco` para acceder a los datos. Mockito permite sustituir esa dependencia por un objeto falso, controlando los datos devueltos y verificando las interacciones entre clases.
-
----
 
 ## Índice
 
@@ -143,3 +138,7 @@ public class BancoServiceTest {
 - Mockito 5.12.0
 - Maven
 - IntelliJ IDEA
+
+
+**1º DAW – Entornos de Desarrollo | IES Mutxamel | Curso 2025/2026**  
+**Autora:** Manuela Planelles Lucas
