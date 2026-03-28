@@ -354,6 +354,130 @@ Las pruebas unitarias ocupan la base porque son el primer nivel de confianza: si
 
 ---
 
+## Mockito — Pruebas de Integración
+
+Como extensión de este proyecto, se ha configurado Mockito para realizar pruebas de integración sobre la clase `CalculadoraService`, que depende de una interfaz `Repositorio` para obtener datos externos.
+
+**Por qué es importante**  
+`CalculadoraService` no puede probarse directamente sin un repositorio real. Mockito permite sustituir esa dependencia por un objeto simulado, controlando los valores que devuelve y verificando que la clase los usa correctamente.
+
+**Clases creadas**
+
+- `Repositorio.java` — interfaz con los métodos `obtenerValorA()` y `obtenerValorB()`
+- `CalculadoraService.java` — lógica de negocio que depende de `Repositorio`
+- `CalculadoraServiceTest.java` — tests con Mockito
+
+**Dependencias añadidas al pom.xml**
+```xml
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.12.0</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-junit-jupiter</artifactId>
+    <version>5.12.0</version>
+    <scope>test</scope>
+</dependency>
+```
+
+**Tests implementados**
+
+| Test | Qué verifica | Técnica Mockito |
+|------|-------------|-----------------|
+| `testSumarValores` | La suma devuelve el resultado correcto y verifica las llamadas | `when` / `verify` |
+| `testSumarValoresConMultiplesRetornos` | Devuelve valores distintos en llamadas consecutivas | `thenReturn` múltiple |
+| `testSumarValoresConExcepcion` | Lanza excepción cuando el repositorio falla | `thenThrow` |
+| `testVerificacionDeOrden` | Los métodos del repositorio se llaman en el orden correcto | `InOrder` |
+| `testUsoDeSpy` | El espía intercepta solo el método indicado | `@Spy` / `doReturn` |
+
+**Resultado**  
+![Mockito tests en verde](img/mockito-tests-verde.png)
+
+<details>
+<summary>Ver código completo — CalculadoraServiceTest.java</summary>
+
+  ```java
+package org.ejercicio;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+public class CalculadoraServiceTest {
+
+    @Mock
+    private Repositorio repositorio;
+
+    @InjectMocks
+    private CalculadoraService calculadoraService;
+
+    @InjectMocks
+    @Spy
+    private CalculadoraService calculadoraSpy;
+
+    @Test
+    void testSumarValores() {
+        when(repositorio.obtenerValorA()).thenReturn(5);
+        when(repositorio.obtenerValorB()).thenReturn(3);
+        int resultado = calculadoraService.sumarValores();
+        assertEquals(8, resultado);
+        verify(repositorio).obtenerValorA();
+        verify(repositorio).obtenerValorB();
+    }
+
+    @Test
+    void testSumarValoresConMultiplesRetornos() {
+        when(repositorio.obtenerValorA()).thenReturn(5, 10);
+        when(repositorio.obtenerValorB()).thenReturn(3);
+        assertEquals(8, calculadoraService.sumarValores());
+        assertEquals(13, calculadoraService.sumarValores());
+    }
+
+    @Test
+    void testSumarValoresConExcepcion() {
+        when(repositorio.obtenerValorA())
+            .thenThrow(new RuntimeException("Error al obtener valor A"));
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            calculadoraService.sumarValores();
+        });
+        assertEquals("Error al obtener valor A", exception.getMessage());
+    }
+
+    @Test
+    void testVerificacionDeOrden() {
+        when(repositorio.obtenerValorA()).thenReturn(5);
+        when(repositorio.obtenerValorB()).thenReturn(3);
+        calculadoraService.sumarValores();
+        InOrder inOrder = inOrder(repositorio);
+        inOrder.verify(repositorio).obtenerValorA();
+        inOrder.verify(repositorio).obtenerValorB();
+    }
+
+    @Test
+    void testUsoDeSpy() {
+        doReturn(15).when(calculadoraSpy).sumarValores();
+        int resultado = calculadoraSpy.sumarValores();
+        assertEquals(15, resultado);
+        assertEquals(32, calculadoraService.sumarValores(17, 15));
+    }
+}
+```
+</details>
+
+---
+
 ## Tecnologías
 
 - Java 21
