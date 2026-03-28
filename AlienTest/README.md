@@ -1,12 +1,5 @@
 # 🛸 AlienTest — Misión NASA: Pruebas Unitarias con JUnit 5
 
-**UP05 – Entornos de Desarrollo | IES Mutxamel | Curso 2025/2026**  
-**Alumna:** Manuela Planelles Lucas
-
----
-
-## 📋 Descripción
-
 Proyecto de pruebas unitarias desarrollado como parte de la práctica UP05 de la asignatura Entornos de Desarrollo. El objetivo ha sido verificar el correcto funcionamiento de la clase `Alien`, encargada de registrar especies biológicas externas detectadas por sondas espaciales, utilizando JUnit 5 dentro del entorno IntelliJ IDEA.
 
 📄 [Memoria completa del proyecto](JUnit_MisionLaNase_ManuelaPlanelles.pdf)  
@@ -14,7 +7,7 @@ Proyecto de pruebas unitarias desarrollado como parte de la práctica UP05 de la
 
 ---
 
-## 🗂️ Estructura del proyecto
+## Estructura del proyecto
 ```
 AlienTest/
 ├── src/
@@ -28,3 +21,7 @@ AlienTest/
 │               └── [AlienTest.java](./AlienTest/src/test/java/org/example/AlienTest.java)
 └── pom.xml
 ```
+
+*UP05 – Entornos de Desarrollo | IES Mutxamel | Curso 2025/2026*
+
+*Alumna:* Manuela Planelles Lucas
