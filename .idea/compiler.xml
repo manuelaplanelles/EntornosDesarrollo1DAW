@@ -11,6 +11,7 @@
         <module name="MercadawTest" />
         <module name="AlienTest" />
         <module name="CalculadoraTest" />
+        <module name="EvaluacionFinal" />
       </profile>
     </annotationProcessing>
   </component>
