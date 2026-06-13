@@ -1,6 +1,16 @@
 Responde razonadamente:
 1.	¿Qué significa tener una buena cobertura de pruebas?
+Que mis tests prueban la mayor parte del código, no solo los casos normales, sino también las distintas ramas (de if/else) y los casos límite.
+Así me aseguro de que casi ninguna línea se queda sin comprobar.
 2.	¿Es posible que existan errores aunque todos los tests aparezcan en verde?
+Claro, que estén en verde solo quiere decir que los casos que yo he probado funcionan bien.
+Si hay un caso que no se me ha ocurrido probar, el error sigue ahí escondido aunque todo esté verde.
+Los tests solo comprueban lo que tú les pides comprobar.
 3.	¿Por qué son importantes los casos límite? ¿Y extremos?
+La mayoría de los fallos aparecen en los casos límite, no en los comunes.
+Por ejemplo, en puedePresentarseRecuperacion el corte está en nota 5: tengo que probar justo el 5 para ver si el >= está bien puesto.
+Los extermos, como dividir entre 0 en calcularPorcentajeTareas, sirven para comprobar que el programa no se rompe con valores raros.
 4.	¿Qué método consideras más crítico de la clase y por qué?
+Los métodos más críticos son calcularNotaFinal, porque hace cálculos que deciden la nota del alumno y puede arrastrar errores, y calcularPuntosExtra, porque al llevar un bucle (una traza) es fácil equivocarse al calcular el resultado esperado."
 5.	Propón dos casos de prueba adicionales que no hayas implementado.
+Mi primera proposicion sería: calcularNotaFinal, probar con 4 tareas (una menos de 5) para confirmar que NO suma la bonificación de 0.5 cuando no toca. La segunda proposición: calcularPorcentajeTareas, probar con números negativos de tareas realizadas, para ver cómo reacciona ante datos que no deberían darse."
